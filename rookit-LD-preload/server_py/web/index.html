@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>C2 Manager</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>🤖 C2 Manager <span class="pill" id="count">0</span></h1>
+<div class="sub">
+  C2 listening on <code>0.0.0.0:4444</code> &nbsp;·&nbsp;
+  Web manager on <code>http://localhost:8080/</code>
+</div>
+
+<div id="empty" class="empty">暂无客户端连接,等待 agent 上线…</div>
+<table id="tbl" style="display:none">
+  <thead><tr>
+    <th>ID</th><th>机器</th><th>地址</th>
+    <th>上线时间</th><th>最后活跃</th><th>Banner</th><th></th>
+  </tr></thead>
+  <tbody id="body"></tbody>
+</table>
+
+<script src="/index.js"></script>
+</body>
+</html>
